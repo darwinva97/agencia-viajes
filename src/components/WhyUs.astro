@@ -1,0 +1,74 @@
+---
+const benefits = [
+  {
+    icon: '🎯',
+    title: 'Guías expertos locales',
+    description: 'Nuestros guías son peruanos apasionados por su tierra, con certificación oficial y años de experiencia.',
+  },
+  {
+    icon: '👥',
+    title: 'Grupos pequeños',
+    description: 'Máximo 12 viajeros por grupo para una experiencia más personalizada y auténtica.',
+  },
+  {
+    icon: '🌱',
+    title: 'Turismo responsable',
+    description: 'Comprometidos con el medio ambiente y las comunidades locales. Viaja dejando huella positiva.',
+  },
+  {
+    icon: '💰',
+    title: 'Mejor precio garantizado',
+    description: 'Si encuentras un precio menor, lo igualamos. Sin costos ocultos, total transparencia.',
+  },
+];
+---
+
+<section class="section bg-primary" id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label" style="color: var(--accent-light);">¿Por qué elegirnos?</span>
+      <h2>Tu aventura en las mejores manos</h2>
+      <p style="color: rgba(255,255,255,.75);">Más de 15 años creando experiencias inolvidables en Perú.</p>
+    </div>
+
+    <div class="grid-4 benefits-grid">
+      {benefits.map(b => (
+        <div class="benefit-card">
+          <span class="benefit-icon">{b.icon}</span>
+          <h3>{b.title}</h3>
+          <p>{b.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefit-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.1);
+    transition: var(--transition);
+  }
+  .benefit-card:hover {
+    background: rgba(255,255,255,.12);
+    transform: translateY(-4px);
+  }
+  .benefit-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .benefit-card h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .benefit-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,.7);
+    line-height: 1.6;
+  }
+</style>

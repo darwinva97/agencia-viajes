@@ -1,0 +1,201 @@
+---
+const destinos = [
+  { name: 'Machu Picchu', href: '/destinos/cusco-machu-picchu' },
+  { name: 'Cusco', href: '/destinos/cusco-machu-picchu' },
+  { name: 'Lago Titicaca', href: '/destinos' },
+  { name: 'Amazonas', href: '/destinos' },
+  { name: 'Arequipa', href: '/destinos' },
+  { name: 'Líneas de Nazca', href: '/destinos' },
+];
+const paquetes = [
+  'Cusco Imperial',
+  'Selva Amazónica',
+  'Perú Completo',
+  'Lima Gastronómica',
+  'Trekking Inca',
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <span>⛰️</span>
+          <div>
+            <strong>Andes Explorer</strong>
+            <small>Agencia de Viajes</small>
+          </div>
+        </a>
+        <p>Somos una agencia de viajes peruana con más de 15 años de experiencia, especializados en crear experiencias únicas e inolvidables por todo el Perú.</p>
+        <div class="certifications">
+          <span class="cert-badge">🏛️ MINCETUR</span>
+          <span class="cert-badge">✈️ IATA</span>
+          <span class="cert-badge">🌿 Turismo Sostenible</span>
+        </div>
+      </div>
+
+      <div>
+        <h4>Destinos Populares</h4>
+        <ul class="footer-links">
+          {destinos.map(d => (
+            <li><a href={d.href}>{d.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Paquetes</h4>
+        <ul class="footer-links">
+          {paquetes.map(p => (
+            <li><a href="/#paquetes">{p}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li>📍 Av. José Larco 812, Miraflores, Lima</li>
+          <li>📞 +51 1 242 5678</li>
+          <li>📱 +51 987 654 321 (WhatsApp)</li>
+          <li>✉️ info@andesexplorer.pe</li>
+          <li>🕐 Lun - Sáb: 9:00 - 19:00</li>
+        </ul>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="TripAdvisor">TA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Andes Explorer. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Política de Cancelación</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--primary);
+    color: rgba(255,255,255,.85);
+    padding: 4rem 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .footer-logo strong {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    line-height: 1.1;
+  }
+  .footer-logo small {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    display: block;
+  }
+  .footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .certifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cert-badge {
+    padding: 0.3rem 0.7rem;
+    background: rgba(255,255,255,.1);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .footer h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: 0.2s;
+  }
+  .footer-links a:hover { opacity: 1; color: var(--accent-light); }
+  .footer-contact li {
+    font-size: 0.88rem;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.2s;
+  }
+  .social-links a:hover { background: var(--accent); }
+  .footer-bottom {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-bottom p { font-size: 0.85rem; opacity: 0.7; }
+  .footer-bottom-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .footer-bottom-links a {
+    font-size: 0.82rem;
+    opacity: 0.6;
+  }
+  .footer-bottom-links a:hover { opacity: 1; }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-bottom-links { justify-content: center; }
+  }
+</style>

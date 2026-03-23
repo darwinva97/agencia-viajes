@@ -1,0 +1,275 @@
+---
+import Page from '../../layouts/Page.astro';
+
+const destinations = [
+  {
+    name: 'Cusco & Machu Picchu',
+    region: 'Sierra',
+    image: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=600&q=80',
+    description: 'La ciudad imperial y la maravilla del mundo. Templos incas, mercados coloridos y paisajes andinos impresionantes.',
+    highlights: ['Machu Picchu', 'Valle Sagrado', 'Sacsayhuamán', 'Montaña de Colores'],
+    bestSeason: 'Abril - Octubre',
+    duration: '3-7 días',
+    price: 299,
+    href: '/destinos/cusco-machu-picchu',
+  },
+  {
+    name: 'Lago Titicaca',
+    region: 'Sierra',
+    image: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=600&q=80',
+    description: 'El lago navegable más alto del mundo. Islas flotantes de los Uros, Taquile y la cultura aymara viva.',
+    highlights: ['Islas de los Uros', 'Isla Taquile', 'Sillustani', 'Puno'],
+    bestSeason: 'Mayo - Septiembre',
+    duration: '2-4 días',
+    price: 199,
+    href: '/destinos',
+  },
+  {
+    name: 'Amazonas',
+    region: 'Selva',
+    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80',
+    description: 'La selva tropical más biodiversa del planeta. Lodges exclusivos, fauna silvestre y comunidades nativas.',
+    highlights: ['Reserva Nacional Pacaya-Samiria', 'Delfines rosados', 'Comunidades nativas', 'Caminata nocturna'],
+    bestSeason: 'Junio - Noviembre',
+    duration: '3-5 días',
+    price: 349,
+    href: '/destinos',
+  },
+  {
+    name: 'Arequipa & Cañón del Colca',
+    region: 'Sierra',
+    image: 'https://images.unsplash.com/photo-1580399581268-478e4e4ae1f5?w=600&q=80',
+    description: 'La Ciudad Blanca y uno de los cañones más profundos del mundo. Cóndores, terrazas agrícolas y aguas termales.',
+    highlights: ['Cañón del Colca', 'Cruz del Cóndor', 'Centro histórico', 'Monasterio de Santa Catalina'],
+    bestSeason: 'Abril - Noviembre',
+    duration: '2-4 días',
+    price: 179,
+    href: '/destinos',
+  },
+  {
+    name: 'Líneas de Nazca',
+    region: 'Costa',
+    image: 'https://images.unsplash.com/photo-1599499462209-5cf308ead061?w=600&q=80',
+    description: 'Misteriosos geoglifos visibles solo desde el aire. Un enigma arqueológico que desafía explicaciones.',
+    highlights: ['Sobrevuelo en avioneta', 'Acueductos de Cantalloc', 'Cementerio de Chauchilla', 'Museo Antonini'],
+    bestSeason: 'Todo el año',
+    duration: '1-2 días',
+    price: 149,
+    href: '/destinos',
+  },
+  {
+    name: 'Huacachina',
+    region: 'Costa',
+    image: 'https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?w=600&q=80',
+    description: 'Un oasis en medio del desierto. Sandboarding en dunas gigantes y atardeceres de película.',
+    highlights: ['Sandboarding', 'Buggy en las dunas', 'Oasis natural', 'Atardecer en las dunas'],
+    bestSeason: 'Todo el año',
+    duration: '1-2 días',
+    price: 129,
+    href: '/destinos',
+  },
+  {
+    name: 'Lima',
+    region: 'Costa',
+    image: 'https://images.unsplash.com/photo-1531968455001-5c5272a67c71?w=600&q=80',
+    description: 'Capital gastronómica de Sudamérica. Historia colonial, museos de clase mundial y la mejor cocina del continente.',
+    highlights: ['Barrio de Miraflores', 'Centro Histórico', 'Gastronomía', 'Museo Larco'],
+    bestSeason: 'Diciembre - Marzo',
+    duration: '2-3 días',
+    price: 99,
+    href: '/destinos',
+  },
+  {
+    name: 'Montaña de Colores',
+    region: 'Sierra',
+    image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80',
+    description: 'Vinicunca, la montaña arcoíris. Un fenómeno natural con estratos minerales de colores increíbles a 5,200 msnm.',
+    highlights: ['Trekking a 5,200 msnm', 'Valle Rojo', 'Paisajes surrealistas', 'Fauna andina'],
+    bestSeason: 'Abril - Octubre',
+    duration: '1 día',
+    price: 79,
+    href: '/destinos',
+  },
+];
+
+const regions = ['Todos', 'Costa', 'Sierra', 'Selva'];
+---
+
+<Page title="Destinos" description="Explora los mejores destinos turísticos del Perú: Cusco, Machu Picchu, Amazonas, Lago Titicaca, Arequipa y más.">
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&q=80" alt="Paisaje del Perú" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <h1>Nuestros Destinos</h1>
+      <p>Descubre la diversidad del Perú: costa, sierra y selva te esperan con experiencias únicas.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        {regions.map(region => (
+          <button class={`filter-btn ${region === 'Todos' ? 'active' : ''}`} data-region={region}>{region}</button>
+        ))}
+      </div>
+
+      <div class="dest-grid" id="destGrid">
+        {destinations.map(dest => (
+          <a href={dest.href} class="card dest-card" data-region={dest.region}>
+            <div class="card-img">
+              <img src={dest.image} alt={dest.name} loading="lazy" />
+              <span class="badge badge-accent dest-region">{dest.region}</span>
+            </div>
+            <div class="card-body">
+              <h3>{dest.name}</h3>
+              <p class="dest-desc">{dest.description}</p>
+              <div class="dest-highlights">
+                {dest.highlights.map(h => (
+                  <span class="tag">{h}</span>
+                ))}
+              </div>
+              <div class="dest-meta">
+                <span>🗓️ {dest.duration}</span>
+                <span>☀️ {dest.bestSeason}</span>
+              </div>
+              <div class="dest-footer">
+                <div>
+                  <span class="price-label">Desde </span>
+                  <span class="price">${dest.price}</span>
+                </div>
+                <span class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Ver más →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .page-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .page-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(30,58,95,.85), rgba(30,58,95,.6));
+  }
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+  }
+  .page-hero-content h1 {
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 0.75rem;
+  }
+  .page-hero-content p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 0.6rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-light);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .dest-card { display: block; }
+  .dest-region {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  .dest-desc {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0.5rem 0 1rem;
+    line-height: 1.6;
+  }
+  .dest-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .dest-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+  .dest-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+  }
+  .dest-footer .price { font-size: 1.3rem; }
+  @media (max-width: 768px) {
+    .dest-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const region = btn.dataset.region;
+      document.querySelectorAll('.dest-card').forEach(card => {
+        const el = card as HTMLElement;
+        if (region === 'Todos' || el.dataset.region === region) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

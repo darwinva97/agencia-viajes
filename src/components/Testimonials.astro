@@ -1,0 +1,117 @@
+---
+const testimonials = [
+  {
+    name: 'Sarah Mitchell',
+    origin: 'Londres, Reino Unido',
+    avatar: 'SM',
+    rating: 5,
+    text: 'Una experiencia absolutamente increíble. Nuestro guía Carlos fue excepcional y Machu Picchu al amanecer fue un momento que jamás olvidaré. La organización fue impecable de principio a fin.',
+    trip: 'Cusco Imperial - 5 días',
+  },
+  {
+    name: 'Thomas Weber',
+    origin: 'Múnich, Alemania',
+    avatar: 'TW',
+    rating: 5,
+    text: 'El tour por la Amazonía superó todas mis expectativas. Pudimos ver delfines rosados, monos y una biodiversidad increíble. El lodge era cómodo y la comida espectacular.',
+    trip: 'Selva Amazónica - 4 días',
+  },
+  {
+    name: 'Emily Chang',
+    origin: 'Toronto, Canadá',
+    avatar: 'EC',
+    rating: 5,
+    text: 'Hicimos el Perú Completo con mi esposo y fue el mejor viaje de nuestra vida. Cada destino fue especial, los guías hablaban perfecto inglés y los hoteles superaron nuestras expectativas.',
+    trip: 'Perú Completo - 12 días',
+  },
+];
+---
+
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Testimonios</span>
+      <h2>Lo que dicen nuestros viajeros</h2>
+      <p>Miles de aventureros de todo el mundo confían en nosotros.</p>
+    </div>
+
+    <div class="grid-3 testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            {Array.from({ length: t.rating }).map(() => (
+              <span class="star">★</span>
+            ))}
+          </div>
+          <p class="testimonial-text">"{t.text}"</p>
+          <div class="testimonial-author">
+            <div class="avatar">{t.avatar}</div>
+            <div>
+              <strong>{t.name}</strong>
+              <span>{t.origin}</span>
+              <span class="testimonial-trip">📍 {t.trip}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-rating {
+    margin-bottom: 1rem;
+  }
+  .star { color: var(--earth-light); font-size: 1.1rem; }
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+    flex: 1;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .testimonial-author strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+  .testimonial-author span {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    display: block;
+  }
+  .testimonial-trip {
+    color: var(--accent) !important;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+</style>

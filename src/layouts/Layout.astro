@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Andes Explorer - Agencia de viajes especializada en tours por Perú. Machu Picchu, Cusco, Amazonas y más destinos increíbles.' } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title} | Andes Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

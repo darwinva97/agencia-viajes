@@ -1,0 +1,534 @@
+---
+import Page from '../../layouts/Page.astro';
+
+const itinerary = [
+  {
+    day: 1,
+    title: 'Llegada a Cusco',
+    description: 'Recepción en el aeropuerto y traslado al hotel. Tarde libre para aclimatación a la altura (3,400 msnm). Mate de coca de bienvenida. Por la noche, cena de bienvenida con show folklórico.',
+    highlights: ['Traslado aeropuerto-hotel', 'Mate de coca', 'Cena de bienvenida'],
+  },
+  {
+    day: 2,
+    title: 'City Tour Cusco',
+    description: 'Recorrido por la Plaza de Armas, la Catedral, el Templo del Sol (Qoricancha), y las ruinas cercanas: Sacsayhuamán, Qenqo, Puca Pucara y Tambomachay. Tarde libre para explorar el barrio de San Blas.',
+    highlights: ['Qoricancha', 'Sacsayhuamán', 'San Blas', 'Plaza de Armas'],
+  },
+  {
+    day: 3,
+    title: 'Valle Sagrado de los Incas',
+    description: 'Excursión de día completo: mercado de Pisac, ruinas de Ollantaytambo, Salineras de Maras y los andenes circulares de Moray. Almuerzo buffet con productos locales. Pernocte en Ollantaytambo.',
+    highlights: ['Pisac', 'Ollantaytambo', 'Salineras de Maras', 'Moray'],
+  },
+  {
+    day: 4,
+    title: 'Machu Picchu',
+    description: 'Tren panorámico a Aguas Calientes y ascenso en bus a la ciudadela. Tour guiado de 2.5 horas por Machu Picchu. Tiempo libre para fotos y exploración. Opción de subir al Huayna Picchu (reserva previa). Retorno a Cusco.',
+    highlights: ['Tren panorámico', 'Tour guiado Machu Picchu', 'Huayna Picchu (opcional)', 'Puerta del Sol'],
+  },
+  {
+    day: 5,
+    title: 'Despedida de Cusco',
+    description: 'Mañana libre para compras en el mercado de San Pedro o últimas visitas. Traslado al aeropuerto según horario de vuelo. Fin de nuestros servicios.',
+    highlights: ['Mercado de San Pedro', 'Tiempo libre', 'Traslado al aeropuerto'],
+  },
+];
+
+const included = [
+  '4 noches de alojamiento en hotel 3★ o 4★',
+  'Desayunos diarios en el hotel',
+  'Cena de bienvenida con show',
+  'Almuerzo buffet en Valle Sagrado',
+  'Todos los traslados y transportes',
+  'Tren turístico a Machu Picchu',
+  'Bus de subida y bajada a Machu Picchu',
+  'Entradas a todos los sitios arqueológicos',
+  'Guía profesional bilingüe (español/inglés)',
+  'Asistencia 24/7 durante el viaje',
+];
+
+const notIncluded = [
+  'Vuelos domésticos o internacionales',
+  'Almuerzos y cenas no mencionados',
+  'Entrada a Huayna Picchu ($20 USD adicional)',
+  'Propinas para guías y conductores',
+  'Seguro de viaje',
+  'Gastos personales',
+];
+
+const pricing = [
+  { type: 'Estándar (Hotel 3★)', solo: 749, double: 599, group: 549 },
+  { type: 'Superior (Hotel 4★)', solo: 999, double: 799, group: 699 },
+  { type: 'Premium (Hotel 5★)', solo: 1399, double: 1099, group: 999 },
+];
+
+const related = [
+  { name: 'Lago Titicaca', image: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=400&q=80', price: 199, href: '/destinos' },
+  { name: 'Cañón del Colca', image: 'https://images.unsplash.com/photo-1580399581268-478e4e4ae1f5?w=400&q=80', price: 179, href: '/destinos' },
+  { name: 'Amazonas', image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=80', price: 349, href: '/destinos' },
+];
+
+const galleryPhotos = [
+  'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=600&q=80',
+  'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&q=80',
+  'https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80',
+  'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80',
+  'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=600&q=80',
+  'https://images.unsplash.com/photo-1580399581268-478e4e4ae1f5?w=600&q=80',
+];
+---
+
+<Page title="Cusco & Machu Picchu" description="Tour a Cusco y Machu Picchu - 5 días / 4 noches. Valle Sagrado, City Tour y la maravilla del mundo. Desde $599 por persona.">
+
+  <!-- Hero -->
+  <section class="dest-hero">
+    <div class="dest-hero-bg">
+      <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1920&q=80" alt="Machu Picchu al amanecer" />
+      <div class="dest-hero-overlay"></div>
+    </div>
+    <div class="container dest-hero-content">
+      <div class="dest-hero-badges">
+        <span class="badge badge-accent">Más popular</span>
+        <span class="badge badge-white">★ 4.9 (1,247 reseñas)</span>
+      </div>
+      <h1>Cusco & Machu Picchu</h1>
+      <p>5 días / 4 noches de historia, cultura y paisajes que te dejarán sin aliento</p>
+      <div class="dest-hero-meta">
+        <span>📍 Cusco, Perú</span>
+        <span>🗓️ 5 días / 4 noches</span>
+        <span>🏔️ 3,400 msnm</span>
+        <span>☀️ Mejor época: Abr - Oct</span>
+      </div>
+      <div class="dest-hero-price">
+        <span class="price-label">Desde</span>
+        <span class="price" style="font-size: 2.5rem; color: #fff;">$599</span>
+        <span class="price-label">por persona</span>
+      </div>
+      <a href="#reservar" class="btn btn-primary btn-lg">Reservar ahora</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-main">
+          <span class="section-label">Descripción general</span>
+          <h2>La experiencia Cusco Imperial</h2>
+          <p class="overview-text">
+            Sumérgete en la capital del Imperio Inca con este tour completo de 5 días. Desde las imponentes murallas de Sacsayhuamán hasta la mística ciudadela de Machu Picchu, cada momento está diseñado para conectarte con la historia y la belleza natural de los Andes peruanos.
+          </p>
+          <p class="overview-text">
+            Recorre el Valle Sagrado con sus mercados coloridos y ruinas milenarias, maravíllate con las Salineras de Maras y los andenes circulares de Moray, y vive el momento cumbre al contemplar Machu Picchu al amanecer.
+          </p>
+
+          <div class="overview-highlights">
+            <h3>Highlights del viaje</h3>
+            <div class="highlights-grid">
+              <div class="highlight-item">
+                <span>🏛️</span>
+                <div>
+                  <strong>Machu Picchu</strong>
+                  <p>Maravilla del mundo moderno</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span>🏔️</span>
+                <div>
+                  <strong>Valle Sagrado</strong>
+                  <p>Pisac, Ollantaytambo, Maras</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span>🌆</span>
+                <div>
+                  <strong>Cusco Colonial</strong>
+                  <p>Plaza de Armas, San Blas</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span>🚂</span>
+                <div>
+                  <strong>Tren Panorámico</strong>
+                  <p>Vistas espectaculares</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-sidebar">
+          <div class="quick-facts">
+            <h3>Datos rápidos</h3>
+            <ul>
+              <li><strong>Duración:</strong> 5 días / 4 noches</li>
+              <li><strong>Dificultad:</strong> Moderada</li>
+              <li><strong>Altitud máx.:</strong> 3,400 msnm</li>
+              <li><strong>Grupo:</strong> 2-12 personas</li>
+              <li><strong>Idiomas:</strong> Español, Inglés</li>
+              <li><strong>Salidas:</strong> Diarias</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Itinerary -->
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Itinerario</span>
+        <h2>Día a día de tu aventura</h2>
+      </div>
+
+      <div class="itinerary">
+        {itinerary.map(day => (
+          <div class="itin-day">
+            <div class="itin-day-marker">
+              <span class="itin-day-num">Día {day.day}</span>
+              <div class="itin-line"></div>
+            </div>
+            <div class="itin-content">
+              <h3>{day.title}</h3>
+              <p>{day.description}</p>
+              <div class="itin-highlights">
+                {day.highlights.map(h => (
+                  <span class="tag">{h}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Included / Not Included -->
+  <section class="section">
+    <div class="container">
+      <div class="inc-grid">
+        <div>
+          <h2 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1.5rem;">✓ Incluido en el tour</h2>
+          <ul class="included-list">
+            {included.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 style="color: #ef4444; font-size: 1.5rem; margin-bottom: 1.5rem;">✗ No incluido</h2>
+          <ul class="included-list not-included">
+            {notIncluded.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galería</span>
+        <h2>Imágenes del destino</h2>
+      </div>
+      <div class="detail-gallery">
+        {galleryPhotos.map(src => (
+          <div class="detail-gallery-item">
+            <img src={src} alt="Cusco y Machu Picchu" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Precios</span>
+        <h2>Elige tu categoría</h2>
+        <p>Todos los precios son por persona en dólares americanos (USD).</p>
+      </div>
+
+      <div class="pricing-table-wrapper">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Individual</th>
+              <th>Doble (por persona)</th>
+              <th>Grupo 4+ (por persona)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pricing.map(p => (
+              <tr>
+                <td><strong>{p.type}</strong></td>
+                <td class="price">${p.solo}</td>
+                <td class="price">${p.double}</td>
+                <td class="price">${p.group}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Destinations -->
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Combina tu viaje</span>
+        <h2>Destinos relacionados</h2>
+      </div>
+      <div class="grid-3">
+        {related.map(dest => (
+          <a href={dest.href} class="card">
+            <div class="card-img">
+              <img src={dest.image} alt={dest.name} loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3>{dest.name}</h3>
+              <div style="margin-top: 0.5rem;">
+                <span class="price-label">Desde </span>
+                <span class="price">${dest.price}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="section bg-primary" id="reservar">
+    <div class="container" style="text-align: center;">
+      <h2>¿Listo para vivir Cusco y Machu Picchu?</h2>
+      <p style="color: rgba(255,255,255,.8); font-size: 1.1rem; max-width: 550px; margin: 1rem auto 2rem;">Reserva ahora con solo un 30% de anticipo. Cancelación gratuita hasta 15 días antes del viaje.</p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="/#contacto" class="btn btn-primary btn-lg">Reservar este tour</a>
+        <a href="https://wa.me/51987654321?text=Hola! Me interesa el tour Cusco y Machu Picchu" class="btn btn-white btn-lg" target="_blank" rel="noopener">📱 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</Page>
+
+<style>
+  /* Hero */
+  .dest-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dest-hero-bg { position: absolute; inset: 0; }
+  .dest-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .dest-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30,58,95,.95) 0%, rgba(30,58,95,.5) 50%, rgba(0,0,0,.2) 100%);
+  }
+  .dest-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding-top: 6rem;
+  }
+  .dest-hero-content h1 {
+    color: #fff;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: 0.75rem;
+  }
+  .dest-hero-content > p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto 1.5rem;
+  }
+  .dest-hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .dest-hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+  }
+  .dest-hero-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .dest-hero-price .price-label { color: rgba(255,255,255,.7); }
+
+  /* Overview */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .overview-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .overview-highlights { margin-top: 2rem; }
+  .overview-highlights h3 { margin-bottom: 1.25rem; }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-alt);
+    border-radius: var(--radius-sm);
+  }
+  .highlight-item span:first-child { font-size: 1.5rem; }
+  .highlight-item strong { display: block; font-size: 0.95rem; color: var(--primary); }
+  .highlight-item p { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+
+  .quick-facts {
+    background: var(--bg-alt);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid #fed7aa;
+    position: sticky;
+    top: 6rem;
+  }
+  .quick-facts h3 { margin-bottom: 1.25rem; }
+  .quick-facts li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+  }
+  .quick-facts li:last-child { border-bottom: none; }
+
+  /* Itinerary */
+  .itinerary { max-width: 800px; margin: 0 auto; }
+  .itin-day {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .itin-day-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 60px;
+  }
+  .itin-day-num {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .itin-line {
+    width: 2px;
+    flex: 1;
+    background: #e2e8f0;
+    margin-top: 0.5rem;
+  }
+  .itin-content {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    flex: 1;
+  }
+  .itin-content h3 { margin-bottom: 0.75rem; }
+  .itin-content p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .itin-highlights { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  /* Included */
+  .inc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  /* Gallery */
+  .detail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .detail-gallery-item {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .detail-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .detail-gallery-item:hover img { transform: scale(1.05); }
+
+  /* Pricing table */
+  .pricing-table-wrapper {
+    overflow-x: auto;
+  }
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  .pricing-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+  }
+  .pricing-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .pricing-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .pricing-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+  }
+  .pricing-table td.price { font-size: 1.15rem; }
+  .pricing-table tbody tr:hover { background: var(--bg-alt); }
+
+  @media (max-width: 768px) {
+    .overview-grid { grid-template-columns: 1fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .inc-grid { grid-template-columns: 1fr; }
+    .detail-gallery { grid-template-columns: repeat(2, 1fr); }
+    .itin-day { gap: 1rem; }
+    .itin-day-marker { width: 50px; }
+  }
+</style>

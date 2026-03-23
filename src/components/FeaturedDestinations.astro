@@ -1,0 +1,141 @@
+---
+const destinations = [
+  {
+    name: 'Machu Picchu',
+    location: 'Cusco',
+    image: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=600&q=80',
+    duration: '2-5 días',
+    price: 299,
+    rating: 4.9,
+    href: '/destinos/cusco-machu-picchu',
+  },
+  {
+    name: 'Lago Titicaca',
+    location: 'Puno',
+    image: 'https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=600&q=80',
+    duration: '2-3 días',
+    price: 199,
+    rating: 4.8,
+    href: '/destinos',
+  },
+  {
+    name: 'Líneas de Nazca',
+    location: 'Ica',
+    image: 'https://images.unsplash.com/photo-1599499462209-5cf308ead061?w=600&q=80',
+    duration: '1-2 días',
+    price: 149,
+    rating: 4.7,
+    href: '/destinos',
+  },
+  {
+    name: 'Amazonas',
+    location: 'Iquitos',
+    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80',
+    duration: '3-5 días',
+    price: 349,
+    rating: 4.9,
+    href: '/destinos',
+  },
+  {
+    name: 'Cañón del Colca',
+    location: 'Arequipa',
+    image: 'https://images.unsplash.com/photo-1580399581268-478e4e4ae1f5?w=600&q=80',
+    duration: '2-3 días',
+    price: 179,
+    rating: 4.8,
+    href: '/destinos',
+  },
+  {
+    name: 'Huacachina',
+    location: 'Ica',
+    image: 'https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?w=600&q=80',
+    duration: '1-2 días',
+    price: 129,
+    rating: 4.6,
+    href: '/destinos',
+  },
+];
+---
+
+<section class="section" id="destinos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Destinos Destacados</span>
+      <h2>Explora los mejores destinos del Perú</h2>
+      <p>Desde las cumbres de los Andes hasta la selva amazónica, descubre lugares que te dejarán sin aliento.</p>
+    </div>
+
+    <div class="dest-grid">
+      {destinations.map(dest => (
+        <a href={dest.href} class="card dest-card">
+          <div class="card-img">
+            <img src={dest.image} alt={dest.name} loading="lazy" />
+            <div class="dest-overlay">
+              <span class="badge badge-accent">{dest.duration}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="dest-header">
+              <h3>{dest.name}</h3>
+              <div class="rating">★ {dest.rating}</div>
+            </div>
+            <p class="dest-location">📍 {dest.location}</p>
+            <div class="dest-footer">
+              <span class="price-label">Desde</span>
+              <span class="price">${dest.price}</span>
+              <span class="price-label">por persona</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="section-cta">
+      <a href="/destinos" class="btn btn-outline">Ver todos los destinos →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .dest-card { display: block; }
+  .dest-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .dest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.35rem;
+  }
+  .dest-header h3 { font-size: 1.15rem; }
+  .dest-location {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+  }
+  .dest-footer {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+  }
+  .dest-footer .price { font-size: 1.3rem; }
+  .section-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 900px) {
+    .dest-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .dest-grid { grid-template-columns: 1fr; }
+  }
+</style>

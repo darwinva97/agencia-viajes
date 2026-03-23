@@ -1,0 +1,163 @@
+---
+const navLinks = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Destinos', href: '/destinos' },
+  { label: 'Paquetes', href: '/#paquetes' },
+  { label: 'Experiencias', href: '/#experiencias' },
+  { label: 'Nosotros', href: '/#nosotros' },
+  { label: 'Contacto', href: '/#contacto' },
+];
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⛰️</span>
+      <div>
+        <span class="logo-name">Andes Explorer</span>
+        <span class="logo-tagline">Agencia de Viajes</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav">
+      <ul class="nav-list">
+        {navLinks.map(link => (
+          <li><a href={link.href} class="nav-link">{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="/#contacto" class="btn btn-primary btn-cta">Reservar Viaje</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  .header.scrolled {
+    background: rgba(30, 58, 95, 0.97);
+    backdrop-filter: blur(10px);
+    padding: 0.6rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+  }
+  .logo-icon { font-size: 1.8rem; }
+  .logo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: block;
+    line-height: 1.1;
+  }
+  .logo-tagline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    display: block;
+  }
+  .nav-list {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .nav-link {
+    color: rgba(255,255,255,.9);
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .nav-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,.12);
+  }
+  .btn-cta {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.3rem;
+    white-space: nowrap;
+  }
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  @media (max-width: 900px) {
+    .menu-toggle { display: flex; }
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--primary);
+      padding: 5rem 2rem 2rem;
+      transition: right 0.35s ease;
+    }
+    .nav.open { right: 0; }
+    .nav-list { flex-direction: column; gap: 0.25rem; }
+    .nav-link {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      display: block;
+    }
+    .btn-cta { display: none; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('header');
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  menuToggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => nav?.classList.remove('open'));
+  });
+</script>

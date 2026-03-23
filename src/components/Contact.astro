@@ -1,0 +1,175 @@
+---
+---
+
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Contacto</span>
+      <h2>Reserva tu viaje soñado</h2>
+      <p>Completa el formulario y un asesor de viajes te contactará en menos de 24 horas.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="event.preventDefault();">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" class="form-control" placeholder="tu@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" class="form-control" placeholder="+51 999 999 999" />
+          </div>
+          <div class="form-group">
+            <label for="destino">Destino interesado</label>
+            <select id="destino" class="form-control">
+              <option value="">Selecciona un destino</option>
+              <option>Cusco & Machu Picchu</option>
+              <option>Lago Titicaca</option>
+              <option>Amazonas / Iquitos</option>
+              <option>Arequipa & Colca</option>
+              <option>Líneas de Nazca</option>
+              <option>Huacachina</option>
+              <option>Lima</option>
+              <option>Perú Completo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha">Fecha tentativa</label>
+            <input type="date" id="fecha" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="viajeros">Número de viajeros</label>
+            <select id="viajeros" class="form-control">
+              <option>1 viajero</option>
+              <option selected>2 viajeros</option>
+              <option>3-4 viajeros</option>
+              <option>5-8 viajeros</option>
+              <option>9+ viajeros (grupo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo de viaje</label>
+          <select id="tipo" class="form-control">
+            <option>Aventura y trekking</option>
+            <option>Cultural e histórico</option>
+            <option>Gastronómico</option>
+            <option>Luna de miel</option>
+            <option>Familiar</option>
+            <option>Fotografía</option>
+            <option>Bienestar / Wellness</option>
+            <option>Corporativo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" class="form-control" placeholder="Cuéntanos sobre tu viaje soñado..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar consulta</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>📍 Nuestra oficina</h3>
+          <p>Av. José Larco 812, Oficina 401<br />Miraflores, Lima 15074, Perú</p>
+        </div>
+
+        <div class="info-card">
+          <h3>📞 Llámanos</h3>
+          <p>+51 1 242 5678<br />Lun - Sáb: 9:00 - 19:00</p>
+        </div>
+
+        <div class="info-card">
+          <h3>✉️ Email</h3>
+          <p>info@andesexplorer.pe<br />reservas@andesexplorer.pe</p>
+        </div>
+
+        <div class="info-card whatsapp-card">
+          <h3>📱 Reserva rápida por WhatsApp</h3>
+          <p>¿Prefieres chatear? Escríbenos directamente y te respondemos al instante.</p>
+          <a href="https://wa.me/51987654321" class="btn btn-primary" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        </div>
+
+        <div class="trust-badges">
+          <span>🏛️ Autorizado por MINCETUR</span>
+          <span>✈️ Agente IATA acreditado</span>
+          <span>⭐ TripAdvisor Travellers' Choice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-form {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .btn-block { width: 100%; }
+  .info-card {
+    padding: 1.5rem;
+    background: var(--bg-alt);
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+  }
+  .info-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  .whatsapp-card {
+    background: linear-gradient(135deg, #dcfce7, #ecfdf5);
+    border: 1px solid #bbf7d0;
+  }
+  .whatsapp-card .btn { margin-top: 0.75rem; }
+  .trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .trust-badges span {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 1.5rem; }
+  }
+</style>
